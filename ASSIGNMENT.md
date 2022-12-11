@@ -72,7 +72,10 @@ Topics to think about and discuss when we meet:
      Currently, this app is not being used by any other service, if in future it happens to be called by external services, we need to handle cascading failure
      by putting into place circuit breakers using Resilience4J, Spring retry, etc
    2. Scalability:   
-      * Horizontal scaling of the application using load balancer in front of services. Load balancer will route
+      * Not vertical scaling(scale-up) because:
+        * single point of failure 
+        * soon reach the threshold limit 
+      * Horizontal scaling(scale-out) of the application using load balancer in front of service instances. Load balancer will route
          the incoming request to the service which has the named counter.
          Load balancer will calculate `hashcode(counterId)%noOfServices to decide which service the request should be routed to.
       * Databasewise, we need to scale them horizontally, scaling is easy for NoSQL database. 
