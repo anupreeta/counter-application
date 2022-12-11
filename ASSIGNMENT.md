@@ -35,11 +35,13 @@ Topics to think about and discuss when we meet:
       * Create Counter class annotated with @Document 
       * CounterRepository should extend MongoRepository 
       * SQL query:
+      ````````
         Query query = new Query();
         query.addCriteria(Criteria.where("name").is("nails"));
         Update update = new Update();
         update.set("counter_value", 20);
         mongoTemplate.upsert(query, update, Counter.class);
+      ````````
       * Update application.properties to contain MongoDB connection parameters
       * In docker-compose, setup mongodb database with init script to create database counters and counters table
       
@@ -77,7 +79,7 @@ Topics to think about and discuss when we meet:
         * soon reach the threshold limit 
       * Horizontal scaling(scale-out) of the application using load balancer in front of service instances. Load balancer will route
          the incoming request to the service which has the named counter.
-         Load balancer will calculate `hashcode(counterId)%noOfServices to decide which service the request should be routed to.
+         Load balancer will calculate `hashcode(counterId)%noOfServices` to decide which service the request should be routed to.
       * Databasewise, we need to scale them horizontally, scaling is easy for NoSQL database. 
       * SQL databases can be scaled by sharding, sharding by counterId.
    3. Authentication:
