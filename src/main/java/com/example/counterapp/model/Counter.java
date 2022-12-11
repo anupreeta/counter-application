@@ -1,13 +1,9 @@
 package com.example.counterapp.model;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.validation.constraints.Digits;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Positive;
-import java.util.concurrent.atomic.AtomicInteger;
 
 
 public class Counter {

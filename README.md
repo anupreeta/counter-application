@@ -12,18 +12,15 @@ A simple springboot java application to do the following:
   * To build and run tests: ``mvn clean package``
   * To run the application: ``mvn spring-boot:run``
 
-## How to run the application in docker-compose
+## How to run the application in dockerized container using docker-compose
 * Pre-requisite:
   * Docker
-* To run application with `postgresql` database
+* To build and run application with `postgresql` database
+``````
   * docker-compose up
-* To build and run application in dockerized container:
-````
-  * docker build --tag=counter-app:latest . 
-  * docker run -it -p 8080:8080 counter-app
-  * docker-compose up
-````
-* To shutdown application before a fresh start (will loose state): 
+``````
+
+* To shutdown application before a fresh start (Note: it will loose state): 
 ````
   * docker-compose down
   * docker rmi docker-spring-boot-postgres:latest
@@ -99,10 +96,10 @@ and adding REST API methods
 to always get reliable results 
 * Dockerized the application using docker-compose. See Dockerfile and docker-compose for details
 * Depending on the use-case scenario of the application. 2 options:
-  * **NoSQL Databases**: 
+  * **NoSQL Databases**: (example: MongoDB)
     * Advantage -> high scalability, easy to scale horizontally as compared to scaling SQL databases. 
     * Disadvantage -> BASE compliant and not completely ACID compliant resulting in write-write or read-write conflicts incrementing wrong values.
-    This will make the application give unpredictable resulting in slight over-counting or under-counting
+    This will make the application give unpredictable results due to slight over-counting or under-counting
   * **SQL Databases** (example: PostGreSQL):
     * Advantage - > safer option, ACID compliant
     * Disadvantage -> hard to scale horizontally

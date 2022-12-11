@@ -59,10 +59,10 @@ public class CounterService {
   public Counter incrementCounter(String name) {
     CounterEntity counterToBeIncremented = counterRepository.findByName(name).stream().findFirst().orElse(null);
       if(name != null && counterToBeIncremented != null) {
-        AtomicInteger counter = new AtomicInteger(counterToBeIncremented.getValue());
-        counter.getAndIncrement();
+          AtomicInteger counter = new AtomicInteger(counterToBeIncremented.getValue());
+          counter.getAndIncrement();
           counterToBeIncremented.setValue(counter.intValue());
-           counterRepository.save(counterToBeIncremented);
+          counterRepository.save(counterToBeIncremented);
        } else {
          throw new EntityNotFoundException("Counter does not exist");
        }
